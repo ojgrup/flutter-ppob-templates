@@ -1,4 +1,4 @@
-name: Flutter Build Template 1
+name: flutter_ppob
 
 on:
   push:
