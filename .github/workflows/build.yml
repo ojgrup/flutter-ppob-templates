@@ -3,10 +3,10 @@ name: flutter_ppob
 on:
   push:
     branches:
-      - main
+      - master
   pull_request:
     branches:
-      - main
+      - master
 
 jobs:
   build_apk_template1:
