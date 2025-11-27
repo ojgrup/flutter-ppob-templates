@@ -16,7 +16,7 @@ jobs:
     # Ganti 'template1' dengan nama folder template yang Anda inginkan
     defaults:
       run:
-        working-directory: template1 
+        working-directory: flutter_ppob
 
     steps:
       - name: 🔄 Checkout Repository
