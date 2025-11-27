@@ -1,0 +1,55 @@
+name: Flutter Build Template 1
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build_apk_template1:
+    runs-on: ubuntu-latest
+
+    # Tentukan working-directory default untuk seluruh job ini
+    # Ganti 'template1' dengan nama folder template yang Anda inginkan
+    defaults:
+      run:
+        working-directory: template1 
+
+    steps:
+      - name: 🔄 Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: 💻 Set Up Flutter
+        # Gunakan aksi Flutter dari komunitas
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable' # Atau channel lain yang Anda butuhkan
+          
+      - name: 📦 Install Dependencies
+        # Perintah ini akan otomatis dijalankan di 'template1' karena defaults di atas
+        run: flutter pub get
+
+      - name: 🔎 Analyze Code
+        # Perintah ini akan otomatis dijalankan di 'template1'
+        run: flutter analyze
+
+      - name: 🧪 Run Tests (Optional)
+        # Perintah ini akan otomatis dijalankan di 'template1'
+        run: flutter test
+
+      - name: 🏗️ Build Release APK
+        # Perintah ini akan otomatis dijalankan di 'template1'
+        # Ganti dengan 'flutter build appbundle' jika Anda ingin App Bundle
+        run: flutter build apk --release
+
+      - name: 📤 Upload Artifact
+        # Upload file APK hasil build sebagai artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: template1-release-apk
+          # Path ini relatif terhadap working-directory (template1)
+          path: build/app/outputs/flutter-apk/app-release.apk
+
